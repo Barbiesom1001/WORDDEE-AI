@@ -10,7 +10,7 @@ export default function Home() {
         {}
         <Link href="/word-of-the-day">
           <button className="px-8 py-4 bg-[#1a3c3c] text-white rounded-full text-xl font-bold hover:bg-[#142e2e] transition shadow-lg">
-            Start Challenge 🎯
+            Start Challenge 
           </button>
         </Link>
 

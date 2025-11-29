@@ -1,0 +1,52 @@
+[
+    {
+        "date": "2025-11-23",
+        "display_date": "Sun",
+        "score": 5.0
+    },
+    {
+        "date": "2025-11-24",
+        "display_date": "Mon",
+        "score": 6.5
+    },
+    {
+        "date": "2025-11-25",
+        "display_date": "Tue",
+        "score": 4.0
+    },
+    {
+        "date": "2025-11-26",
+        "display_date": "Wed",
+        "score": 8.5
+    },
+    {
+        "date": "2025-11-27",
+        "display_date": "Thu",
+        "score": 7.0
+    },
+    {
+        "date": "2025-11-28",
+        "display_date": "Yesterday",
+        "score": 9.0
+    },
+    {
+        "date": "2025-11-29",
+        "display_date": "Today",
+        "score": 9.5
+    },
+    {
+        "date": "2025-11-29",
+        "display_date": "Sat 14:04",
+        "score": 0
+    },
+    {
+        "date": "2025-11-29",
+        "display_date": "Sat 14:08",
+        "score": "8"
+    },
+    {
+        "date": "2025-11-29",
+        "display_date": "Sat 14:09",
+        "score": "8"
+    }
+]
