@@ -19,7 +19,7 @@ app.add_middleware(
 
 DATA_FILE = "history.json"
 
-# 🔥 ข้อมูลที่จะเสกใส่ไฟล์ (Seed Data)
+
 SEED_DATA = [
     {"date": (datetime.now() - timedelta(days=6)).strftime("%Y-%m-%d"), "display_date": (datetime.now() - timedelta(days=6)).strftime("%a"), "score": 5.0},
     {"date": (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d"), "display_date": (datetime.now() - timedelta(days=5)).strftime("%a"), "score": 6.5},
@@ -37,7 +37,7 @@ WORDS_DB = [
         "pronunciation": "[run-way]",
         "meaning": "A strip of hard ground along which aircraft take off and land.",
         "example": "The jet braked hard as its wheels touched the runway.",
-        "imageUrl": "https://images.unsplash.com/photo-1559627775-60c04fa28249?q=80&w=2070&auto=format&fit=crop"
+        "imageUrl": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop"
     },
     {
         "word": "Aurora",
@@ -57,17 +57,17 @@ WORDS_DB = [
     }
 ]
 
-# 🔥 ฟังก์ชันทำงานทันทีเมื่อเริ่ม Server (Startup Event)
+
 @app.on_event("startup")
 async def startup_event():
-    # เช็คว่าไฟล์มีหรือยัง ถ้าไม่มีให้สร้างเลย
+    
     if not os.path.exists(DATA_FILE):
         print(f"Creating new data file at: {os.path.abspath(DATA_FILE)}")
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(SEED_DATA, f, indent=4)
-        print("✅ Seed data written successfully!")
+        print(" Seed data written successfully!")
     else:
-        print(f"✅ Found existing data file at: {os.path.abspath(DATA_FILE)}")
+        print(f" Found existing data file at: {os.path.abspath(DATA_FILE)}")
 
 def load_history():
     if not os.path.exists(DATA_FILE):
@@ -120,7 +120,7 @@ async def validate_sentence(data: SentenceInput):
 async def get_summary():
     history = load_history()
 
-    # คำนวณ Streak แบบละเอียด
+
     unique_dates = sorted(list(set(item["date"] for item in history)), reverse=True)
     today_str = datetime.now().strftime("%Y-%m-%d")
     yesterday_str = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")

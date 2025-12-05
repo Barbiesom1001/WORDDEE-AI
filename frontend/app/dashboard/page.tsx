@@ -7,7 +7,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 export default function Dashboard() {
   const [data, setData] = useState<any[]>([]);
-  const [stats, setStats] = useState({ streak: 0, minutes: 0 }); // เก็บค่าสถิติ
+  const [stats, setStats] = useState({ streak: 0, minutes: 0 });
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -18,12 +18,12 @@ export default function Dashboard() {
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:8000/api/summary");
-      // รับข้อมูล 2 ส่วน: กราฟ (chart) และ สถิติ (stats)
+
       if (res.data && res.data.stats) {
           setStats(res.data.stats);
       }
       
-      // เช็คว่ามี chart ส่งมาไหม
+      
       if (res.data && res.data.chart) {
           setData(res.data.chart);
       }
@@ -48,7 +48,7 @@ export default function Dashboard() {
         <div className="mb-10">
             <h2 className="text-xl font-serif font-bold text-[#1a3c3c] mb-4">Your missions today</h2>
             <div className="bg-[#eff6f5] p-4 rounded-lg text-[#2f5f5f] font-medium text-sm flex items-center border border-[#dcece9]">
-                🎉 Keep learning to increase your stats!
+                Keep learning to increase your stats!
             </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function Dashboard() {
                 <div className="text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
                         <Flame className="text-green-400 w-8 h-8 fill-green-400" />
-                        {/* 🔥 โชว์ค่า Streak จริงจาก Backend */}
+                        {/* โชว์ค่า Streak จริงจาก Backend */}
                         <span className="text-4xl font-bold text-[#1a3c3c]">{stats.streak}</span>
                     </div>
                     <p className="text-gray-500 text-sm">Total Played</p>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                 <div className="text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
                         <Clock className="text-blue-400 w-8 h-8" />
-                        {/* 🕒 โชว์ค่า Minutes จริงจาก Backend */}
+                        {/* โชว์ค่า Minutes จริงจาก Backend */}
                         <span className="text-4xl font-bold text-[#1a3c3c]">{stats.minutes}</span>
                     </div>
                     <p className="text-gray-500 text-sm">Minutes learned</p>
