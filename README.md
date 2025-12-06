@@ -1,11 +1,10 @@
-Created by
+# Created by
 
 1.  ทิพวรรณ ยิ้มเนียม 1660903921
 2.  สิริกานต์ ปุริสังคหะ 1660904101
 3.  อรพินธ์ นาคุณ 1660904689
  
-
-
+---
 
 # Worddee.ai 🌍
 
@@ -36,4 +35,3 @@ source venv/bin/activate
 pip install fastapi uvicorn pydantic httpx
 
 python -m uvicorn main:app --reload --port 8000
-
