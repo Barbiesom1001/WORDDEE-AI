@@ -95,8 +95,8 @@ export default function Dashboard() {
                                 </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} dy={10} />
-                            <YAxis domain={[0, 10]} axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} />
+                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} dy={5} />
+                            <YAxis domain={[0, 50]} axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} />
                             <Tooltip contentStyle={{ borderRadius: '8px' }} />
                             <Area type="monotone" dataKey="score" stroke="#1a3c3c" strokeWidth={3} fill="url(#colorScore)" activeDot={{ r: 6 }} />
                         </AreaChart>
