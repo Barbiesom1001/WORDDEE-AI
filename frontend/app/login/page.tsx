@@ -15,7 +15,6 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[#8da399] flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
         
-        {/* Header */}
         <div className="bg-[#1a3c3c] p-8 text-center relative">
             <Link href="/" className="absolute top-6 left-6 text-white/70 hover:text-white">
                 <ArrowLeft />
@@ -24,7 +23,6 @@ export default function LoginPage() {
             <p className="text-teal-100/80 text-sm">Sign in to continue your progress</p>
         </div>
 
-        {/* Form */}
         <div className="p-8 space-y-6">
             <div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>

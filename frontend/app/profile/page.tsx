@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { UserCircle, Mail, BarChart3, LogOut, ArrowLeft, Save, Edit2, Camera, Image as ImageIcon } from "lucide-react"; // 🔥 เพิ่มไอคอน Image
+import { UserCircle, Mail, BarChart3, LogOut, ArrowLeft, Save, Edit2, Camera, Image as ImageIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
@@ -50,7 +50,7 @@ export default function ProfilePage() {
   const handleSave = () => {
     localStorage.setItem("worddee_user", JSON.stringify(user));
     setIsEditing(false);
-    alert("✅ Profile updated successfully!");
+    alert("Profile updated successfully!");
   };
 
   const handleLogout = () => {
@@ -76,7 +76,7 @@ export default function ProfilePage() {
                     backgroundImage: `url('${user.coverUrl || "https://images.unsplash.com/photo-1464822759023-d625a6fc654b?q=80&w=2070&auto=format&fit=crop"}')`
                 }}
             >
-                <div className="absolute inset-0 bg-black/20"></div> {/* เลเยอร์เงาบางๆ */}
+                <div className="absolute inset-0 bg-black/20"></div>
 
                 {isEditing && (
                     <button 

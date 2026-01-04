@@ -85,7 +85,7 @@ export default function WordOfTheDay() {
     setIsChecking(true);
 
     setTimeout(() => {
-        const fakeScore = Math.floor(Math.random() * 6) + 5; // สุ่ม 5-10
+        const fakeScore = Math.floor(Math.random() * 6) + 5;
         
         const now = new Date();
         const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });

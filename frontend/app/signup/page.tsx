@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react"; // 🔥 เพิ่ม useState
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -8,23 +8,20 @@ import { useRouter } from "next/navigation";
 export default function SignupPage() {
   const router = useRouter();
   
-  // 🔥 สร้างตัวแปรเก็บค่าที่พิมพ์
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignup = () => {
-    // ตรวจสอบว่ากรอกครบไหม
     if (!fullName || !email || !password) {
         alert("Please fill in all fields");
         return;
     }
 
-    // 🔥 บันทึกข้อมูลลงเครื่อง (LocalStorage)
     const userData = { name: fullName, email: email };
     localStorage.setItem("worddee_user", JSON.stringify(userData));
 
-    alert("✅ Account created successfully! Please log in.");
+    alert("Account created successfully! Please log in.");
     router.push("/login");
   };
 
@@ -46,7 +43,6 @@ export default function SignupPage() {
                 <input 
                     type="text" 
                     placeholder="John Doe"
-                    // 🔥 ผูกตัวแปรกับช่องกรอก
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     className="w-full border border-gray-300 rounded-xl p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
@@ -58,7 +54,6 @@ export default function SignupPage() {
                 <input 
                     type="email" 
                     placeholder="you@example.com"
-                    // 🔥 ผูกตัวแปรกับช่องกรอก
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full border border-gray-300 rounded-xl p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"

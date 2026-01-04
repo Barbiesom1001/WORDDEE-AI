@@ -30,27 +30,30 @@ const generateRealData = () => {
         const dateKey = d.toISOString().split('T')[0];
         const dayName = d.toLocaleDateString('en-US', { weekday: 'short' }); 
         const dateNum = d.getDate().toString().padStart(2, '0');
+        
+        const monthName = d.toLocaleDateString('en-US', { month: 'short' });
+        const year = d.getFullYear();
 
         const recordsToday = history.filter((h: any) => h.date === dateKey);
 
         if (recordsToday.length > 0) {
             recordsToday.forEach((record: any) => {
                 const timeLabel = record.time ? ` (${record.time})` : "";
+                
                 newData.push({
-                    name: `${dayName} ${dateNum}${timeLabel}`, // เช่น Mon 04 (10:30 AM)
+                    name: `${dayName} ${dateNum} ${monthName} ${year}${timeLabel}`,
                     score: record.score
                 });
             });
         } else {
             newData.push({
-                name: `${dayName} ${dateNum}`, 
+                name: `${dayName} ${dateNum} ${monthName} ${year}`, 
                 score: 0
             });
         }
     }
     setData(newData);
   };
-
   return (
     <div className="min-h-screen bg-[#fdf2f8]" suppressHydrationWarning>
       
