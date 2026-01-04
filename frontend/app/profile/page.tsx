@@ -8,16 +8,14 @@ import { useRouter } from "next/navigation";
 export default function ProfilePage() {
   const router = useRouter();
   
-  // 🔥 Ref สำหรับ input ไฟล์ทั้ง 2 อัน
-  const fileInputRef = useRef<HTMLInputElement>(null);    // สำหรับรูปโปรไฟล์
-  const coverInputRef = useRef<HTMLInputElement>(null);   // สำหรับรูปพื้นหลัง (Cover)
+  const fileInputRef = useRef<HTMLInputElement>(null);    
+  const coverInputRef = useRef<HTMLInputElement>(null); 
 
-  // State ข้อมูลผู้ใช้ (เพิ่ม coverUrl)
   const [user, setUser] = useState({ 
     name: "Guest User", 
     email: "guest@worddee.ai",
     avatarUrl: null as string | null,
-    coverUrl: null as string | null // 🔥 เก็บรูปพื้นหลัง
+    coverUrl: null as string | null
   });
   
   const [isEditing, setIsEditing] = useState(false);
@@ -29,7 +27,6 @@ export default function ProfilePage() {
     }
   }, []);
 
-  // ฟังก์ชันจัดการรูปโปรไฟล์ (Avatar)
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -40,7 +37,6 @@ export default function ProfilePage() {
     }
   };
 
-  // 🔥 ฟังก์ชันจัดการรูปพื้นหลัง (Cover)
   const handleCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -65,7 +61,7 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-[#fdf2f8]">
       
       <nav className="bg-white py-4 px-8 flex items-center shadow-sm sticky top-0 z-10">
-        <Link href="/" className="text-gray-500 hover:text-teal-700 mr-4">
+        <Link href="/dashboard" className="text-gray-500 hover:text-teal-700 mr-4">
             <ArrowLeft />
         </Link>
         <div className="text-xl font-bold font-serif tracking-tight text-[#1a3c3c]">My Profile</div>
@@ -74,17 +70,14 @@ export default function ProfilePage() {
       <main className="max-w-2xl mx-auto mt-10 p-4">
         <div className="bg-white rounded-3xl shadow-lg overflow-hidden animate-in fade-in zoom-in duration-300">
             
-            {/* 👇👇👇 ส่วนรูปพื้นหลัง (Cover Image) 👇👇👇 */}
             <div 
                 className="h-44 bg-cover bg-center relative group"
                 style={{
-                    // ถ้ามีรูป cover ให้ใช้รูป cover, ถ้าไม่มีให้ใช้รูปวิวภูเขาเป็นค่าเริ่มต้น
                     backgroundImage: `url('${user.coverUrl || "https://images.unsplash.com/photo-1464822759023-d625a6fc654b?q=80&w=2070&auto=format&fit=crop"}')`
                 }}
             >
                 <div className="absolute inset-0 bg-black/20"></div> {/* เลเยอร์เงาบางๆ */}
 
-                {/* 🔥 ปุ่มเปลี่ยนรูปปก (แสดงเฉพาะตอนกด Edit) */}
                 {isEditing && (
                     <button 
                         onClick={() => coverInputRef.current?.click()}
@@ -94,7 +87,6 @@ export default function ProfilePage() {
                     </button>
                 )}
 
-                {/* Input ซ่อนสำหรับ Cover */}
                 <input 
                     type="file" 
                     ref={coverInputRef} 
@@ -108,7 +100,6 @@ export default function ProfilePage() {
             <div className="px-8 pb-8">
                 <div className="relative -mt-12 mb-6 flex justify-between items-end">
                     
-                    {/* 👇👇👇 ส่วนรูปโปรไฟล์ (Avatar) 👇👇👇 */}
                     <div className="relative group">
                         <div 
                             className={`w-24 h-24 rounded-full border-4 border-white overflow-hidden bg-white flex items-center justify-center shadow-md ${isEditing ? 'cursor-pointer' : ''}`}
@@ -121,7 +112,6 @@ export default function ProfilePage() {
                             )}
                         </div>
                         
-                        {/* ไอคอนกล้อง avatar */}
                         {isEditing && (
                             <div 
                                 onClick={() => fileInputRef.current?.click()}
@@ -133,7 +123,6 @@ export default function ProfilePage() {
                         <input type="file" ref={fileInputRef} onChange={handleAvatarChange} accept="image/*" className="hidden" />
                     </div>
                     
-                    {/* ปุ่ม Edit / Save */}
                     <button 
                         onClick={() => isEditing ? handleSave() : setIsEditing(true)}
                         className={`px-4 py-2 rounded-lg text-sm font-bold transition flex items-center gap-2 ${
@@ -146,7 +135,6 @@ export default function ProfilePage() {
                     </button>
                 </div>
 
-                {/* ส่วนข้อมูล Text */}
                 {isEditing ? (
                     <div className="space-y-4 mb-8 animate-in fade-in slide-in-from-top-2 duration-200">
                         <div>
@@ -178,7 +166,6 @@ export default function ProfilePage() {
                     </>
                 )}
 
-                {/* เมนู Dashboard/Logout */}
                 <div className="grid gap-4">
                     <Link href="/dashboard" className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:bg-teal-50 transition group cursor-pointer">
                         <div className="flex items-center gap-4">
