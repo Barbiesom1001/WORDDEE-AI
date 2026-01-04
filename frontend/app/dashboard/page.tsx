@@ -11,13 +11,15 @@ export default function Dashboard() {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   
   const [stats, setStats] = useState({ streak: 0, minutes: 0 });
+  
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     setIsClient(true);
     generateRealData();
     calculateStats();
   }, []);
-
+  
   const calculateStats = () => {
     const savedHistory = localStorage.getItem("worddee_game_history");
     if (savedHistory) {

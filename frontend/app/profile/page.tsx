@@ -61,9 +61,12 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-[#fdf2f8]">
       
       <nav className="bg-white py-4 px-8 flex items-center shadow-sm sticky top-0 z-10">
-        <Link href="/dashboard" className="text-gray-500 hover:text-teal-700 mr-4">
+        <button 
+            onClick={() => router.back()} 
+            className="text-gray-500 hover:text-teal-700 mr-4 transition-colors"
+        >
             <ArrowLeft />
-        </Link>
+        </button>
         <div className="text-xl font-bold font-serif tracking-tight text-[#1a3c3c]">My Profile</div>
       </nav>
 
