@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { UserCircle, Flame, Clock } from "lucide-react";
 import Link from "next/link";
@@ -8,15 +9,32 @@ export default function Dashboard() {
   const [data, setData] = useState<any[]>([]);
   const [isClient, setIsClient] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-
-  const stats = { streak: 5, minutes: 45 };
+  
+  const [stats, setStats] = useState({ streak: 0, minutes: 0 });
 
   useEffect(() => {
     setIsClient(true);
     generateRealData();
+    calculateStats();
   }, []);
 
-const generateRealData = () => {
+  const calculateStats = () => {
+    const savedHistory = localStorage.getItem("worddee_game_history");
+    if (savedHistory) {
+        const history = JSON.parse(savedHistory);
+        
+        const totalPlayed = history.length;
+
+        const totalMinutes = totalPlayed * 3;
+
+        setStats({ 
+            streak: totalPlayed, 
+            minutes: totalMinutes 
+        });
+    }
+  };
+
+  const generateRealData = () => {
     const savedHistory = localStorage.getItem("worddee_game_history");
     const history: any[] = savedHistory ? JSON.parse(savedHistory) : [];
 
@@ -30,7 +48,6 @@ const generateRealData = () => {
         const dateKey = d.toISOString().split('T')[0];
         const dayName = d.toLocaleDateString('en-US', { weekday: 'short' }); 
         const dateNum = d.getDate().toString().padStart(2, '0');
-        
         const monthName = d.toLocaleDateString('en-US', { month: 'short' });
         const year = d.getFullYear();
 
@@ -39,7 +56,6 @@ const generateRealData = () => {
         if (recordsToday.length > 0) {
             recordsToday.forEach((record: any) => {
                 const timeLabel = record.time ? ` (${record.time})` : "";
-                
                 newData.push({
                     name: `${dayName} ${dateNum} ${monthName} ${year}${timeLabel}`,
                     score: record.score
@@ -54,6 +70,7 @@ const generateRealData = () => {
     }
     setData(newData);
   };
+
   return (
     <div className="min-h-screen bg-[#fdf2f8]" suppressHydrationWarning>
       
